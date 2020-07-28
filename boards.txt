@@ -1682,6 +1682,14 @@ GenL0.build.mcu=cortex-m0plus
 GenL0.build.series=STM32L0xx
 GenL0.build.cmsis_lib_gcc=arm_cortexM0l_math
 
+# Generic L031x6
+GenL0.menu.pnum.Generic_L031x6=Generic L031x6
+GenL0.menu.pnum.Generic_L031x6.upload.maximum_size=32768
+GenL0.menu.pnum.Generic_L031x6.upload.maximum_data_size=8192
+GenL0.menu.pnum.Generic_L031x6.build.board=GENERIC_L031X6
+GenL0.menu.pnum.Generic_L031x6.build.product_line=STM32L031xx
+GenL0.menu.pnum.Generic_L031x6.build.variant=Generic_L031x6
+
 # ThunderPack
 GenL0.menu.pnum.THUNDERPACK_L072=ThunderPack v1.0
 GenL0.menu.pnum.THUNDERPACK_L072.upload.maximum_size=196608
