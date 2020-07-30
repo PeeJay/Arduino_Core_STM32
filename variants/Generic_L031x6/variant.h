@@ -39,32 +39,11 @@ extern "C" {
  *        Pins
  *----------------------------------------------------------------------------*/
 
-#define PA10 0
-#define PA9  1
-#define PA12 2
-#define PB0  3
-#define PB7  4
-#define PB6  5
-#define PB1  6
-#define PC14 7
-#define PC15 8
-#define PA8  9
-#define PA11 10
-#define PB5  11
-#define PB4  12
-#define PB3  13 // LED
-#define PA0  14 // A0
-#define PA1  15 // A1
-#define PA3  16 // A2
-#define PA4  17 // A3
-#define PA5  18 // A4
-#define PA6  19 // A5
-#define PA7  20 // A6
-#define PA2  21 // A7 - STLink Tx
-#define PA15 22 // STLink Rx
+
+
 
 // This must be a literal
-#define NUM_DIGITAL_PINS        23
+#define NUM_DIGITAL_PINS        37
 // This must be a literal with a value less than or equal to to MAX_ANALOG_INPUTS
 #define NUM_ANALOG_INPUTS       7
 #define NUM_ANALOG_FIRST        14
@@ -74,8 +53,8 @@ extern "C" {
 #define LED_GREEN               LED_BUILTIN
 
 // I2C Definitions
-#define PIN_WIRE_SDA            4
-#define PIN_WIRE_SCL            5
+#define PIN_WIRE_SDA            PB_7
+#define PIN_WIRE_SCL            PB_6
 
 //Timer Definitions
 #define TIMER_TONE              TIM2
@@ -85,8 +64,8 @@ extern "C" {
 #define SERIAL_UART_INSTANCE    2 //ex: 2 for Serial2 (USART2)
 // Default pin used for 'Serial' instance (ex: ST-Link)
 // Mandatory for Firmata
-#define PIN_SERIAL_RX           PA10
-#define PIN_SERIAL_TX           PA9
+#define PIN_SERIAL_RX           PA_10
+#define PIN_SERIAL_TX           PA_9
 
 #ifdef __cplusplus
 } // extern "C"

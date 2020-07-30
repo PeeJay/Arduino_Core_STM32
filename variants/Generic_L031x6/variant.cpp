@@ -34,31 +34,49 @@
 extern "C" {
 #endif
 
-// Pin number (Copied from NUCLEO L013K)
+// Digital PinName array
 const PinName digitalPin[] = {
-  PA_10, //D0
-  PA_9,  //D1
-  PA_12, //D2
-  PB_0,  //D3
-  PB_7,  //D4
-  PB_6,  //D5
-  PB_1,  //D6
-  PC_14, //D7
-  PC_15, //D8
-  PA_8,  //D9
-  PA_11, //D10
-  PB_5,  //D11
-  PB_4,  //D12
-  PB_3,  //D13
-  PA_0,  //D14/A0
-  PA_1,  //D15/A1
-  PA_3,  //D16/A2
-  PA_4,  //D17/A3
-  PA_5,  //D18/A4
-  PA_6,  //D19/A5
-  PA_7,  //D20/A6
-  PA_2,  //D21/A7
-  PA_15  //D22
+  PA_0,  // Digital pin 0
+  PA_1,  // Digital pin 1
+  PA_2,  // Digital pin 2
+  PA_3,  // Digital pin 3
+  PA_4,  // Digital pin 4
+  PA_5,  // Digital pin 5
+  PA_6,  // Digital pin 6
+  PA_7,  // Digital pin 7
+  PA_8,  // Digital pin 8
+  PA_9,  // Digital pin 9
+  PA_10, // Digital pin 10
+  PA_11, // Digital pin 11
+  PA_12, // Digital pin 12
+  PA_13, // Digital pin 13
+  PA_14, // Digital pin 14
+  PA_15, // Digital pin 15
+
+  PB_0,  // Digital pin 16
+  PB_1,  // Digital pin 17
+  PB_2,  // Digital pin 18
+  PB_3,  // Digital pin 19
+  PB_4,  // Digital pin 20
+  PB_5,  // Digital pin 21
+  PB_6,  // Digital pin 22
+  PB_7,  // Digital pin 23
+  PB_8,  // Digital pin 24
+  PB_9,  // Digital pin 25
+  PB_10, // Digital pin 26
+  PB_11, // Digital pin 27
+  PB_12, // Digital pin 28
+  PB_13, // Digital pin 29
+  PB_14, // Digital pin 30
+  PB_15, // Digital pin 31
+
+  PC_0,  // Digital pin 32
+  PC_13, // Digital pin 33
+  PC_14, // Digital pin 34
+  PC_15, // Digital pin 35
+
+  PH_0,  // Digital pin 36, used by the external oscillator
+  PH_1   // Digital pin 37, used by the external oscillator
 };
 
 #ifdef __cplusplus
@@ -86,11 +104,13 @@ WEAK void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-  RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-  RCC_OscInitStruct.MSICalibrationValue = 0;
-  RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_5;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
+  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -99,12 +119,12 @@ WEAK void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
