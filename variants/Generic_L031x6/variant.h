@@ -39,22 +39,69 @@ extern "C" {
  *        Pins
  *----------------------------------------------------------------------------*/
 
-
+//                  | DIGITAL | ANALOG | USART      | TWI       | SPI        | SPECIAL   |
+//                  |---------|--------|------------|-----------|------------|-----------|
+#define PA0  0   // | 0       | A0     | USART2_CTS |           |            |           |
+#define PA1  1   // | 1       | A1     | USART2_RTS |           |            |           |
+#define PA2  2   // | 2       | A2     | UART1/2_TX |           |            |           |
+#define PA3  3   // | 2       | A3     | UART1/2_RX |           |            |           |
+#define PA4  4   // | 4       | A4     | USART2_CK  |           | SPI1_SS    |           |
+#define PA5  5   // | 5       | A5     |            |           | SPI1_SCK   |           |
+#define PA6  6   // | 6       | A6     | LPUART1_CTS|           | SPI1_MISO  |           |
+#define PA7  7   // | 7       | A7     | USART2_CTS |           | SPI1_MOSI  |           |
+#define PA8  8   // | 8       |        |            |           |            |           |
+#define PA9  9   // | 9       |        | USART2_TX  | TWI1_SCL  |            |           |
+#define PA10 10  // | 10      |        | USART2_RX  | TWI1_SDA  |            |           |
+#define PA11 11  // | 11      |        | USART2_CTS |           | SPI1_MISO  |           |
+#define PA12 12  // | 12      |        | USART2_RTS |           | SPI1_MOSI  |           |
+#define PA13 13  // | 13      |        | LPUART1_RX |           |            | SWD_SWDIO |
+#define PA14 14  // | 14      |        | UART1/2_TX |           |            | SWD_SWCLK |
+#define PA15 15  // | 15      |        | USART2_RX  |           | SPI1_SS    |           |
+//                  |---------|--------|------------|-----------|------------|-----------|
+#define PB0  16  // | 16      | A8     | USART2_RTS |           | SPI1_MISO  |           |
+#define PB1  17  // | 17      | A9     | LPUART1_RTS|           | SPI1_MOSI  |           |
+#define PB2  18  // | 18      |        |            |           |            | BOOT1???     |
+#define PB3  19  // | 19      |        |            |           | SPI1_SCK   |           |
+#define PB4  20  // | 20      |        |            |           | SPI1_MISO  |           |
+#define PB5  21  // | 21      |        |            |           | SPI1_MOSI  |           |
+#define PB6  22  // | 22      |        | USART2_TX  | TWI1_SCL  |            |           |
+#define PB7  23  // | 23      |        | USART2_RX  | TWI1_SDA  |            |           |
+#define PB8  24  // | 24      |        |            | TWI1_SCL  |            |           |
+#define PB9  25  // | 25      |        |            | TWI1_SDA  |            |           |
+#define PB10 26  // | 26      |        | LPUART1_TX |           |            |           |
+#define PB11 27  // | 27      |        | LPUART1_RX |           |            |           |
+#define PB12 28  // | 28      |        |            |           | SPI1_SS    |           |
+#define PB13 29  // | 29      |        | LPUART1_CTS|           | SPI1_SCK   |           |
+#define PB14 30  // | 30      |        | LPUART1_RTS|           | SPI1_MISO  | RTC_OUT   |
+#define PB15 31  // | 31      |        |            |           | SPI1_MOSI  | RTC_REFIN |
+//                  |---------|--------|------------|-----------|------------|-----------|
+#define PC0  32  // | 32      |        | LPUART1_RX |           |            |           |
+#define PC13 33  // | 33      |        |            |           |            | TAMP1     |
+#define PC14 34  // | 34      |        |            |           |            | OSC32_IN  |
+#define PC15 35  // | 35      |        |            |           |            | OSC32_OUT |
+//                  |---------|--------|------------|-----------|------------|-----------|
+#define PH0  36  // | 36      |        |            |           |            | OSC_IN    |
+#define PH1  37  // | 37      |        |            |           |            | OSC_OUT   |
+//                  |---------|--------|------------|-----------|------------|-----------|
 
 
 // This must be a literal
-#define NUM_DIGITAL_PINS        37
-// This must be a literal with a value less than or equal to to MAX_ANALOG_INPUTS
-#define NUM_ANALOG_INPUTS       7
-#define NUM_ANALOG_FIRST        14
+#define NUM_DIGITAL_PINS        38
+#define NUM_ANALOG_INPUTS       10
 
 // On-board LED pin number
 #define LED_BUILTIN             NC
 #define LED_GREEN               LED_BUILTIN
 
+// SPI Definitions
+#define PIN_SPI_SS              PA4
+#define PIN_SPI_MOSI            PA7
+#define PIN_SPI_MISO            PA6
+#define PIN_SPI_SCK             PA5
+
 // I2C Definitions
-#define PIN_WIRE_SDA            PB_7
-#define PIN_WIRE_SCL            PB_6
+#define PIN_WIRE_SDA            PB7
+#define PIN_WIRE_SCL            PB6
 
 //Timer Definitions
 #define TIMER_TONE              TIM2
